@@ -1,0 +1,84 @@
+{
+  "scraper_settings": {
+    "user_agents_rotation": true,
+    "random_delays": {
+      "min_delay": 1,
+      "max_delay": 4
+    },
+    "request_timeout": 10,
+    "max_retries": 3,
+    "anti_detection": {
+      "rotate_headers": true,
+      "use_proxies": false,
+      "proxy_list": []
+    }
+  },
+  
+  "esports_categories": {
+    "e_soccer_fifa": {
+      "enabled": true,
+      "url_pattern": "/sports/fifa-esoccer",
+      "markets": ["match_result", "total_goals", "both_teams_score"],
+      "priority": 1
+    },
+    "ebasketball": {
+      "enabled": true,
+      "url_pattern": "/sports/virtual-basketball",
+      "markets": ["match_result", "total_points", "point_spread"],
+      "priority": 2
+    },
+    "virtual_table_tennis": {
+      "enabled": true,
+      "url_pattern": "/sports/table-tennis-virtual",
+      "markets": ["match_result", "set_betting", "total_points"],
+      "priority": 3
+    },
+    "counter_strike": {
+      "enabled": true,
+      "url_pattern": "/sports/counter-strike",
+      "markets": ["match_result", "map_winner", "total_rounds"],
+      "priority": 4
+    },
+    "virtual_tennis": {
+      "enabled": true,
+      "url_pattern": "/sports/tennis-virtual",
+      "markets": ["match_result", "set_betting", "total_games"],
+      "priority": 5
+    }
+  },
+  
+  "data_storage": {
+    "save_format": "json",
+    "save_directory": "./data",
+    "filename_pattern": "bet365_esports_{category}_{timestamp}.json",
+    "keep_history": true,
+    "max_files": 100
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "log_file": "bet365_scraper.log",
+    "max_log_size": "10MB",
+    "backup_count": 5
+  },
+  
+  "real_time_mode": {
+    "enabled": false,
+    "scrape_interval": 300,
+    "categories_per_cycle": ["e_soccer_fifa", "ebasketball"],
+    "continuous_monitoring": true
+  },
+  
+  "api_endpoints": {
+    "bet365_base": "https://www.bet365.com",
+    "mobile_api": "https://mobile.bet365.com/api",
+    "odds_api": "https://www.bet365.com/api/odds"
+  },
+  
+  "market_filters": {
+    "minimum_odds": 1.01,
+    "maximum_odds": 50.0,
+    "exclude_suspended": true,
+    "only_live_matches": false
+  }
+}
